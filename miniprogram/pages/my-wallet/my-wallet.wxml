@@ -1,0 +1,78 @@
+<!-- pages/my-wallet/my-wallet.wxml -->
+<view class="wallet-page">
+  <!-- 余额总览 -->
+  <view class="balance-section">
+    <text class="balance-label">账户余额 (元)</text>
+    <text class="balance-amount">{{balance.total.toFixed(2)}}</text>
+    <view class="balance-detail">
+      <text>可用余额: {{balance.available.toFixed(2)}}元</text>
+      <text>冻结金额: {{balance.frozen.toFixed(2)}}元</text>
+    </view>
+  </view>
+
+  <!-- 快速操作 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="handleRecharge">
+      <view class="action-icon">➕</view>
+      <text class="action-text">充值</text>
+    </view>
+    <view class="action-item" bindtap="handleWithdraw" wx:if="{{balance.available > 0}}">
+      <view class="action-icon">➖</view>
+      <text class="action-text">提现</text>
+    </view>
+    <view class="action-item" bindtap="navigateToRecords">
+      <view class="action-icon">📋</view>
+      <text class="action-text">交易记录</text>
+    </view>
+  </view>
+
+  <!-- 收支统计 -->
+  <view class="stats-section">
+    <view class="stats-card">
+      <text class="stats-title">本月收支</text>
+      <view class="stats-content">
+        <view class="stat-item">
+          <text class="stat-label">收入</text>
+          <text class="stat-value income">+{{monthStats.income.toFixed(2)}}</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-label">支出</text>
+          <text class="stat-value expense">-{{monthStats.expense.toFixed(2)}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近交易 -->
+  <view class="recent-section">
+    <view class="section-header">
+      <text class="section-title">最近交易</text>
+      <text class="section-more" bindtap="navigateToRecords">查看全部 ></text>
+    </view>
+    
+    <view class="transaction-list">
+      <block wx:for="{{recentTransactions}}" wx:key="id">
+        <view class="transaction-item">
+          <view class="transaction-info">
+            <text class="transaction-type">{{item.type}}</text>
+            <text class="transaction-time">{{item.time}}</text>
+          </view>
+          <text class="transaction-amount {{item.amount > 0 ? 'income' : 'expense'}}">
+            {{item.amount > 0 ? '+' : ''}}{{item.amount.toFixed(2)}}
+          </text>
+          <text class="transaction-status {{item.status}}">{{item.statusText}}</text>
+        </view>
+      </block>
+      
+      <view wx:if="{{recentTransactions.length === 0}}" class="empty-state">
+        <text>暂无交易记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 安全提示 -->
+  <view class="security-tips">
+    <text class="tips-title">安全提示</text>
+    <text class="tips-content">请勿向他人泄露支付密码，谨防诈骗</text>
+  </view>
+</view>

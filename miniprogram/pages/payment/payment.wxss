@@ -1,0 +1,275 @@
+/* pages/payment/payment.wxss */
+.payment-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 160rpx;
+}
+
+/* 订单信息 */
+.order-info {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.order-header {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.order-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.order-detail {
+  padding: 30rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-row .label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.detail-row .value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.detail-row .price {
+  font-size: 36rpx;
+  color: #FF5722;
+  font-weight: 500;
+}
+
+/* 支付方式 */
+.payment-methods {
+  background: #fff;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.method-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.method-item.selected {
+  background: #f0f9f0;
+  border-color: #4CAF50;
+}
+
+.method-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.method-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.method-icon.wechat {
+  background: #e8f5e9;
+}
+
+.method-icon.alipay {
+  background: #e3f2fd;
+}
+
+.method-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.method-name {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.method-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.method-radio {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.radio {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ddd;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.radio.checked {
+  border-color: #4CAF50;
+  background: #4CAF50;
+}
+
+.radio.checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 24rpx;
+}
+
+/* 底部支付栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.total-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.total-amount {
+  font-size: 36rpx;
+  color: #FF5722;
+  font-weight: bold;
+}
+
+.pay-btn {
+  padding: 24rpx 80rpx;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.4);
+}
+
+/* 支付结果弹窗 */
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 600rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 60rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.result-icon {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  color: #fff;
+}
+
+.result-icon.success {
+  background: #4CAF50;
+}
+
+.result-icon.fail {
+  background: #FF5722;
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.result-desc {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.result-actions {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.result-btn {
+  width: 100%;
+  height: 88rpx;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

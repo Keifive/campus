@@ -1,0 +1,108 @@
+<!--pages/express/express-publish.wxml-->
+
+<view class="container">
+  <view class="form-card">
+    <!-- 商品信息 -->
+    <view class="form-item">
+      <text class="form-label required">商品名称</text>
+      <input class="form-input" placeholder="请输入商品名称" value="{{formData.goods}}" bindinput="onInputChange" data-field="goods"/>
+    </view>
+
+    <!-- 打赏金额 -->
+    <view class="form-item">
+      <text class="form-label required">打赏金额(元)</text>
+      <input class="form-input" type="digit" placeholder="请输入打赏金额" value="{{formData.price}}" bindinput="onInputChange" data-field="price"/>
+    </view>
+
+    <!-- 取货地址 -->
+    <view class="form-item">
+      <text class="form-label required">取货地址</text>
+      <input class="form-input" placeholder="如：菜鸟驿站A区" value="{{formData.pickupAddress}}" bindinput="onInputChange" data-field="pickupAddress"/>
+    </view>
+
+    <!-- 取货详情 -->
+    <view class="form-item">
+      <text class="form-label required">取货详情</text>
+      <input class="form-input" placeholder="如：取件码12-3-456" value="{{formData.pickupDetail}}" bindinput="onInputChange" data-field="pickupDetail"/>
+    </view>
+
+    <!-- 送货地址 -->
+    <view class="form-item">
+      <text class="form-label required">送货地址</text>
+      <input class="form-input" placeholder="如：学生公寓6号楼" value="{{formData.deliveryAddress}}" bindinput="onInputChange" data-field="deliveryAddress"/>
+    </view>
+
+    <!-- 送货详情 -->
+    <view class="form-item">
+      <text class="form-label required">送货详情</text>
+      <input class="form-input" placeholder="如：602室" value="{{formData.deliveryDetail}}" bindinput="onInputChange" data-field="deliveryDetail"/>
+    </view>
+
+    <!-- 联系人 -->
+    <view class="form-item">
+      <text class="form-label required">联系人</text>
+      <input class="form-input" placeholder="请输入联系人姓名" value="{{formData.contact}}" bindinput="onInputChange" data-field="contact"/>
+    </view>
+
+    <!-- 联系电话 -->
+    <view class="form-item">
+      <text class="form-label required">联系电话</text>
+      <input class="form-input" type="number" placeholder="请输入联系电话" value="{{formData.phone}}" bindinput="onInputChange" data-field="phone"/>
+    </view>
+
+    <!-- 截止时间 -->
+    <view class="form-item">
+      <text class="form-label required">接单截止时间</text>
+      <view class="picker-group">
+        <picker mode="date" value="{{formData.deadlineDate}}" bindchange="onDateChange">
+          <view class="picker-value">{{formData.deadlineDate || '选择日期'}}</view>
+        </picker>
+        <picker mode="time" value="{{formData.deadlineTime}}" bindchange="onTimeChange">
+          <view class="picker-value">{{formData.deadlineTime || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view class="form-item">
+      <text class="form-label">详细描述</text>
+      <textarea class="form-textarea" placeholder="请输入详细描述（选填）" value="{{formData.description}}" bindinput="onInputChange" data-field="description"/>
+    </view>
+
+    <!-- 紧急程度 -->
+    <view class="form-item">
+      <text class="form-label">紧急程度</text>
+      <view class="urgent-options">
+        <view class="urgent-option {{formData.urgentLevel === '' ? 'active' : ''}}" bindtap="setUrgent" data-level="">
+          <text>普通</text>
+        </view>
+        <view class="urgent-option {{formData.urgentLevel === '紧急' ? 'active' : ''}}" bindtap="setUrgent" data-level="紧急">
+          <text>紧急</text>
+        </view>
+        <view class="urgent-option {{formData.urgentLevel === '特急' ? 'active' : ''}}" bindtap="setUrgent" data-level="特急">
+          <text>特急</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 上传图片 -->
+    <view class="form-item">
+      <text class="form-label">相关图片</text>
+      <view class="image-upload">
+        <view class="image-item" wx:for="{{formData.images}}" wx:key="index">
+          <image src="{{item}}" mode="aspectFill"/>
+          <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+        </view>
+        <view class="upload-btn" bindtap="chooseImage" wx:if="{{formData.images.length < 3}}">
+          <text class="upload-icon">+</text>
+          <text class="upload-text">添加图片</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn" bindtap="submitOrder">
+    <text>发布需求</text>
+  </view>
+</view>

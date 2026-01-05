@@ -1,0 +1,301 @@
+/* pages/express/express-detail.wxss */
+
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+/* 顶部分享按钮 */
+.top-share-btn {
+  position: fixed;
+  left: 20rpx;
+  bottom: 280rpx;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 70rpx;
+  background: #4CAF50;
+  border-radius: 12rpx;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.3);
+}
+
+.top-share-btn::after {
+  border: none;
+}
+
+.share-icon {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.share-text {
+  font-size: 18rpx;
+  color: #fff;
+  margin-top: 4rpx;
+}
+
+/* 状态标签 */
+.status-badge {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  z-index: 10;
+}
+
+.status-badge.pending {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border: 2rpx solid #4CAF50;
+}
+
+.status-badge.accepted {
+  background: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+  border: 2rpx solid #2196F3;
+}
+
+.status-badge.completed {
+  background: rgba(158, 158, 158, 0.1);
+  color: #9E9E9E;
+  border: 2rpx solid #9E9E9E;
+}
+
+.status-badge.expired {
+  background: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+  border: 2rpx solid #FF9800;
+}
+
+/* 订单卡片 */
+.order-card {
+  background: #fff;
+  margin: 60rpx 20rpx 20rpx;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.order-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.order-meta {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.meta-date {
+  margin-right: 20rpx;
+}
+
+.meta-type {
+  background: #f5f5f5;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+
+.meta-views {
+  margin-left: auto;
+}
+
+/* 详情列表 */
+.detail-list {
+  padding: 10rpx 0;
+}
+
+.detail-item {
+  display: flex;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  width: 180rpx;
+  font-size: 28rpx;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.detail-value.highlight {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.detail-value.price {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+/* 接单人信息 */
+.accepter-section {
+  margin-top: 30rpx;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.accepter-info {
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  padding: 20rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+}
+
+/* 悬浮首页按钮 */
+.home-btn {
+  position: fixed;
+  left: 20rpx;
+  bottom: 370rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
+.home-icon {
+  font-size: 28rpx;
+}
+
+.home-text {
+  font-size: 18rpx;
+  color: #666;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 按钮重置样式 - 只针对分享按钮 */
+button.action-btn.share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0 20rpx;
+  margin: 0;
+  line-height: normal;
+  font-size: 22rpx;
+  color: #666;
+}
+
+button.action-btn.share::after {
+  border: none;
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-bottom: 4rpx;
+}
+
+.main-action {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-left: 30rpx;
+}
+
+.main-action.accept {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.main-action.cancel {
+  background: #FF5722;
+  color: #fff;
+  flex: 0.3;
+}
+
+.main-action.pay {
+  background: #FF9800;
+  color: #fff;
+  flex: 0.35;
+  margin-left: 20rpx;
+}
+
+.main-action.complete {
+  background: #4CAF50;
+  color: #fff;
+  flex: 0.35;
+  margin-left: 20rpx;
+}
+
+.main-action.disabled {
+  background: #e0e0e0;
+  color: #999;
+}
+
+.action-btn.favorite.active {
+  color: #FF5722;
+}
+
+.phone {
+  color: #4CAF50;
+  text-decoration: underline;
+}

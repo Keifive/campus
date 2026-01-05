@@ -1,0 +1,26 @@
+<!--pages/privacy/privacy.wxml-->
+<view class="privacy-container">
+  <view class="privacy-list">
+    <!-- 授权管理 -->
+    <view class="privacy-item" bindtap="navToAuthManage">
+      <text class="privacy-label">授权管理</text>
+      <text class="privacy-desc">管理小程序授权项</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 个人信息可见性 -->
+    <view class="privacy-item" bindtap="navToInfoVisibility">
+      <text class="privacy-label">个人信息可见性</text>
+      <text class="privacy-desc">控制谁可以看到你的信息</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 隐私政策 -->
+    <view class="privacy-item" bindtap="navToPrivacyPolicy">
+      <text class="privacy-label">隐私政策</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    
+  </view>
+</view>

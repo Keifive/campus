@@ -1,0 +1,44 @@
+/* pages/account-security/change-pwd.wxss */
+.pwd-container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.form-group {
+  background-color: #fff;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.form-label {
+  width: 180rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+input {
+  flex: 1;
+  height: 100%;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.submit-btn {
+  margin-top: 60rpx;
+  width: 100%;
+  height: 90rpx;
+  line-height: 60rpx;
+  background-color: #07c160;
+  color: #fff;
+  font-size: 34rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.submit-btn[disabled] {
+  background-color: #ccc;
+}

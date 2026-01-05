@@ -1,0 +1,47 @@
+<!--pages/ques/ques.wxml-->
+<view class="ques-page">
+  <!-- 问题列表 -->
+  <scroll-view class="ques-list" scroll-y="true" bindscrolltolower="loadMore">
+    <view class="ques-item" wx:for="{{quesList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id || item._id}}">
+      <view class="ques-header">
+        <image class="user-avatar" src="{{item.userAvatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <text class="user-name">{{item.userName}}</text>
+          <text class="publish-time">{{item.publishTime}}</text>
+        </view>
+      </view>
+      <view class="ques-content">
+        <text class="ques-text">{{item.content}}</text>
+        <view class="ques-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image class="ques-img" wx:for="{{item.images}}" wx:for-item="img" wx:key="index" src="{{img}}" mode="aspectFill"></image>
+        </view>
+      </view>
+      <view class="ques-footer">
+        <view class="footer-item">
+          <text class="icon">👍</text>
+          <text class="count">{{item.likeCount || 0}}</text>
+        </view>
+        <view class="footer-item">
+          <text class="icon">💬</text>
+          <text class="count">{{item.commentCount || 0}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{quesList.length === 0}}">
+      <text class="empty-text">暂无问题，快来发布第一个吧~</text>
+    </view>
+  </scroll-view>
+
+  <!-- 底部按钮区域 -->
+  <view class="bottom-actions">
+    <view class="my-ques-btn" bindtap="goToMyQues">
+      <text>我的发布</text>
+    </view>
+    <view class="publish-btn" bindtap="goToPublish">
+      <text class="publish-icon">+</text>
+      <text class="publish-text">发布问题</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+<!-- pages/my-accept/my-accept.wxml -->
+<view class="container">
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stats-title">我接单的任务</view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{taskStats.total || 0}}</text>
+        <text class="stat-label">全部</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{taskStats.inprogress || 0}}</text>
+        <text class="stat-label">进行中</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{taskStats.completed || 0}}</text>
+        <text class="stat-label">已完成</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务筛选 -->
+  <view class="filter-tabs">
+    <view class="filter-tab {{currentFilter === 'all' ? 'active' : ''}}" bindtap="changeFilter" data-filter="all">
+      全部
+    </view>
+    <view class="filter-tab {{currentFilter === 'inprogress' ? 'active' : ''}}" bindtap="changeFilter" data-filter="inprogress">
+      进行中
+    </view>
+    <view class="filter-tab {{currentFilter === 'completed' ? 'active' : ''}}" bindtap="changeFilter" data-filter="completed">
+      已完成
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <scroll-view class="task-list" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="task-card" wx:for="{{taskList}}" wx:key="id">
+      <view class="task-header">
+        <view class="task-type-tag {{item.type}}">
+          {{item.type === 'express' ? '快递' : item.type === 'buy' ? '代买' : item.type === 'urgent' ? '急事' : item.type === 'rent' ? '租借' : '陪替'}}
+        </view>
+        <view class="task-status-tag {{item.status}}">
+          {{item.status === 'accepted' ? '进行中' : item.status === 'completed' ? '已完成' : '已取消'}}
+        </view>
+        <view class="task-price">¥{{item.price}}</view>
+      </view>
+      
+      <view class="task-content">
+        <view class="task-title">{{item.title || item.goods || '订单任务'}}</view>
+        <view class="task-info">
+          <text>📅 {{item.createTime}}</text>
+          <text>⏱️ {{item.deadline}}</text>
+        </view>
+        <view class="task-publisher">
+          <text>发布人: {{item.publisher}}</text>
+          <text class="phone">📞 {{item.publisherPhone}}</text>
+        </view>
+      </view>
+      
+      <view class="task-actions" wx:if="{{item.status === 'accepted'}}">
+        <button class="action-btn complete" catchtap="completeTask" data-id="{{item.id}}" data-type="{{item.type}}">完成</button>
+        <button class="action-btn cancel" catchtap="cancelAccept" data-id="{{item.id}}" data-type="{{item.type}}">取消</button>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{taskList.length === 0}}" class="empty-state">
+      <view class="empty-icon">🤝</view>
+      <text class="empty-title">暂无接单的任务</text>
+      <text class="empty-desc">快去首页接取任务吧！</text>
+      <button class="empty-btn" bindtap="goToIndex">去首页接单</button>
+    </view>
+  </scroll-view>
+</view>

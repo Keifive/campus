@@ -1,0 +1,41 @@
+<!--pages/privacy/auth-manage.wxml-->
+<view class="authm-container">
+  
+  <!-- 授权项列表 -->
+  <view class="authm-list">
+    <view class="authm-item">
+    <text class="authm-label">昵称头像</text>
+      <switch 
+      checked="{{item.checked}}" 
+      bindchange="handleAuthChange" 
+      data-type="{{item.type}}"
+      disabled="{{item.disabled}}"
+      color="#07c160"
+    />
+    </view>
+  </view>
+
+    <view class="authm-list">
+    <view class="authm-item"><text class="authm-label">位置信息</text>
+      <switch 
+      checked="{{item.checked}}" 
+      bindchange="handleAuthChange" 
+      data-type="{{item.type}}"
+      disabled="{{item.disabled}}"
+      color="#07c160"
+    />
+    </view>
+  </view>
+
+    <view class="authm-list">
+    <view class="authm-item"><text class="authm-label">手机号码</text>
+      <switch 
+      checked="{{item.checked}}" 
+      bindchange="handleAuthChange" 
+      data-type="{{item.type}}"
+      disabled="{{item.disabled}}"
+      color="#07c160"
+    />
+    </view>
+  </view>
+</view>

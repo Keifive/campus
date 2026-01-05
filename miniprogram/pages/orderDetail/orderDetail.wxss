@@ -1,0 +1,36 @@
+.page-container {
+  padding: 24rpx;
+}
+
+.section {
+  margin-bottom: 20rpx;
+  display: flex;
+}
+.label {
+  font-weight: bold;
+  width: 180rpx;
+}
+.value {
+  flex: 1;
+}
+.pending {
+  color: #faad14;
+}
+.accepted {
+  color: #1890ff;
+}
+.completed {
+  color: #52c41a;
+}
+.expired {
+  color: #999;
+}
+.btn-group button {
+  margin-right: 16rpx;
+  margin-top: 30rpx;
+}
+.empty {
+  padding: 80rpx 0;
+  text-align: center;
+  color: #999;
+}

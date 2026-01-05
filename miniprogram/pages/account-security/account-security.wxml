@@ -1,0 +1,35 @@
+<!--pages/account-security/account-security.wxml-->
+<view class="security-container">
+  <view class="security-list">
+    <!-- 修改密码 -->
+    <view class="security-item" bindtap="navToChangePwd">
+      <text class="security-label">修改密码</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 登录设备管理 -->
+    <view class="security-item" bindtap="navToDeviceManage">
+      <text class="security-label">登录设备管理</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 账号绑定 -->
+    <view class="security-item" bindtap="navToBindAccount">
+      <text class="security-label">账号绑定</text>
+      <view class="security-desc">微信已绑定</view>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 登录记录 -->
+    <view class="security-item" bindtap="navToLoginRecord">
+      <text class="security-label">登录记录</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+
+    <!-- 注销账号 -->
+    <view class="security-item danger-item" bindtap="showUnregisterDialog">
+      <text class="security-label">注销账号</text>
+      <icon type="right" size="16" color="#ccc"></icon>
+    </view>
+  </view>
+</view>

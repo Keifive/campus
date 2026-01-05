@@ -1,0 +1,3 @@
+/* pages/company/company-detail.wxss */
+/* 复用 express-detail 的样式 */
+@import "../express/express-detail.wxss";

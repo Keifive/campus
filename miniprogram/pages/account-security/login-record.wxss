@@ -1,0 +1,60 @@
+/* pages/account-security/login-record.wxss */
+.record-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  font-size: 32rpx;
+}
+
+.record-count {
+  color: #999;
+}
+
+.record-list {
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-top: 10px;
+}
+
+.record-item {
+  padding: 20rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.record-time {
+  font-size: 30rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.record-info {
+  margin-bottom: 10rpx;
+}
+
+.record-device, .record-location {
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+
+.device-label, .location-label {
+  color: #999;
+}
+
+.record-status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.risk-tag {
+  font-size: 26rpx;
+  color: #ff7d00;
+  background-color: #fff8e6;
+  padding: 3rpx 15rpx;
+  border-radius: 20rpx;
+}

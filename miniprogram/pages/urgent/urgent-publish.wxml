@@ -1,0 +1,69 @@
+<!--pages/urgent/urgent-publish.wxml-->
+
+<view class="container">
+  <view class="form-card">
+    <!-- 需求标题 -->
+    <view class="form-item">
+      <text class="form-label required">需求标题</text>
+      <input class="form-input" placeholder="请输入需求标题" value="{{formData.title}}" bindinput="onInputChange" data-field="title"/>
+    </view>
+
+    <!-- 打赏金额 -->
+    <view class="form-item">
+      <text class="form-label required">打赏金额(元)</text>
+      <input class="form-input" type="digit" placeholder="请输入打赏金额" value="{{formData.price}}" bindinput="onInputChange" data-field="price"/>
+    </view>
+
+    <!-- 联系人 -->
+    <view class="form-item">
+      <text class="form-label required">联系人</text>
+      <input class="form-input" placeholder="请输入联系人姓名" value="{{formData.contact}}" bindinput="onInputChange" data-field="contact"/>
+    </view>
+
+    <!-- 联系电话 -->
+    <view class="form-item">
+      <text class="form-label required">联系电话</text>
+      <input class="form-input" type="number" placeholder="请输入联系电话" value="{{formData.phone}}" bindinput="onInputChange" data-field="phone"/>
+    </view>
+
+    <!-- 截止时间 -->
+    <view class="form-item">
+      <text class="form-label required">接单截止时间</text>
+      <view class="picker-group">
+        <picker mode="date" value="{{formData.deadlineDate}}" bindchange="onDateChange">
+          <view class="picker-value">{{formData.deadlineDate || '选择日期'}}</view>
+        </picker>
+        <picker mode="time" value="{{formData.deadlineTime}}" bindchange="onTimeChange">
+          <view class="picker-value">{{formData.deadlineTime || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view class="form-item">
+      <text class="form-label required">详细描述</text>
+      <textarea class="form-textarea" placeholder="请详细描述您的需求" value="{{formData.description}}" bindinput="onInputChange" data-field="description"/>
+    </view>
+
+    <!-- 紧急程度 -->
+    <view class="form-item">
+      <text class="form-label">紧急程度</text>
+      <view class="urgent-options">
+        <view class="urgent-option {{formData.urgentLevel === '' ? 'active' : ''}}" bindtap="setUrgent" data-level="">
+          <text>普通</text>
+        </view>
+        <view class="urgent-option {{formData.urgentLevel === '紧急' ? 'active' : ''}}" bindtap="setUrgent" data-level="紧急">
+          <text>紧急</text>
+        </view>
+        <view class="urgent-option {{formData.urgentLevel === '特急' ? 'active' : ''}}" bindtap="setUrgent" data-level="特急">
+          <text>特急</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn" bindtap="submitOrder">
+    <text>发布需求</text>
+  </view>
+</view>

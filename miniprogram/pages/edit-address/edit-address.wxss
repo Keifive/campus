@@ -1,0 +1,31 @@
+/* pages/edit-address/edit-address.wxss */
+.form {
+  padding: 30rpx;
+  background: #fff;
+}
+.item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+.item text {
+  width: 200rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.item input {
+  flex: 1;
+  font-size: 30rpx;
+}
+.switch {
+  justify-content: space-between;
+}
+.save-btn {
+  margin-top: 60rpx;
+  background: #07c160;
+  color: #fff;
+  border-radius: 44rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}

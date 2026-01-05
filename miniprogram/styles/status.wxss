@@ -1,0 +1,13 @@
+.status-pending {
+  color: #faad14;
+}
+.status-accepted {
+  color: #1890ff;
+}
+.status-completed {
+  color: #52c41a;
+}
+.status-expired {
+  color: #999;
+}
+

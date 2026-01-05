@@ -1,0 +1,215 @@
+<!-- pages/profile/profile.wxml -->
+<view class="profile-page">
+  <!-- 未登录状态 -->
+  <view wx:if="{{!isLoggedIn}}">
+    <!-- 顶部用户信息卡片 -->
+    <view class="user-card">
+      <view class="user-header">
+        <view class="user-avatar-placeholder">
+          <text class="avatar-text">👤</text>
+        </view>
+        <view class="user-meta">
+          <text class="user-name">请登录</text>
+          <text class="user-id">学号：未登录</text>
+          <text class="user-phone">手机：未绑定</text>
+        </view>
+        <view class="login-btn-small" bindtap="navigateToLogin">
+          <text>登录</text>
+        </view>
+      </view>
+      
+      <!-- 用户统计 -->
+      <view class="user-stats">
+        <view class="stat-item">
+          <text class="stat-value">0</text>
+          <text class="stat-label">信用分</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-value">0</text>
+          <text class="stat-label">余额(元)</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-value">0</text>
+          <text class="stat-label">完成任务</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 任务统计卡片 -->
+    <view class="stats-card">
+      <view class="stats-header">
+        <text class="stats-title">我的任务统计</text>
+        <text class="stats-more" bindtap="showLoginTip">查看全部 ></text>
+      </view>
+      <view class="stats-grid">
+        <view class="grid-item" bindtap="showLoginTip">
+          <text class="grid-count">0</text>
+          <text class="grid-label">我发布的</text>
+        </view>
+        <view class="grid-item" bindtap="showLoginTip">
+          <text class="grid-count">0</text>
+          <text class="grid-label">我接单的</text>
+        </view>
+        <view class="grid-item" bindtap="showLoginTip">
+          <text class="grid-count">0</text>
+          <text class="grid-label">已完成的</text>
+        </view>
+        <view class="grid-item" bindtap="showLoginTip">
+          <text class="grid-count">0</text>
+          <text class="grid-label">收藏的</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="menu-section">
+      <view class="menu-item" bindtap="showLoginTip">
+        <view class="menu-icon">💰</view>
+        <text class="menu-text">我的钱包</text>
+        <text class="menu-extra">0元</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="showLoginTip">
+        <view class="menu-icon">🏠</view>
+        <text class="menu-text">收货地址</text>
+        <text class="menu-extra">0个</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToSettings">
+        <view class="menu-icon">⚙️</view>
+        <text class="menu-text">系统设置</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToAbout">
+        <view class="menu-icon">ℹ️</view>
+        <text class="menu-text">关于我们</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="showLoginTip">
+        <view class="menu-icon">💬</view>
+        <text class="menu-text">意见反馈</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 登录提示区域 -->
+    <view class="login-prompt">
+      <view class="prompt-content">
+        <text class="prompt-title">登录后享受完整功能</text>
+        <text class="prompt-desc">发布任务、接单赚钱、管理钱包、查看历史记录</text>
+        <button class="prompt-btn" bindtap="navigateToLogin">立即登录/注册</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 已登录状态 -->
+  <view wx:else>
+    <!-- 顶部用户信息卡片 -->
+    <view class="user-card">
+      <view class="user-header">
+        <image class="user-avatar" src="{{userInfo.avatarUrl || 'https://ui-avatars.com/api/?name=用户&background=4CAF50&color=fff'}}" 
+               bindtap="chooseAvatar"></image>
+        <view class="user-meta">
+          <text class="user-name">{{userInfo.nickName || '用户'}}</text>
+          <text class="user-id">学号: {{userInfo.studentId}}</text>
+          <text class="user-phone">{{userInfo.phone || '未绑定手机号'}}</text>
+        </view>
+        <view class="edit-btn" bindtap="navigateToEditProfile">
+          <text>编辑</text>
+        </view>
+      </view>
+      
+      <!-- 用户统计 -->
+      <view class="user-stats">
+        <view class="stat-item" bindtap="showCreditScoreInfo">
+          <text class="stat-value">{{userInfo.creditScore || 100}}</text>
+          <text class="stat-label">信用分</text>
+        </view>
+        <view class="stat-item" bindtap="navigateToMyWallet">
+          <text class="stat-value">{{wallet.balance || 0}}</text>
+          <text class="stat-label">余额(元)</text>
+        </view>
+        <view class="stat-item" bindtap="navigateToMyCompleted">
+          <text class="stat-value">{{taskStats.completed || 0}}</text>
+          <text class="stat-label">完成任务</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 任务统计卡片 -->
+    <view class="stats-card">
+      <view class="stats-header">
+        <text class="stats-title">我的任务统计</text>
+        <text class="stats-more" bindtap="navigateToAllTasks">查看全部 ></text>
+      </view>
+      <view class="stats-grid">
+        <view class="grid-item" bindtap="navigateToMyPublish">
+          <text class="grid-count">{{taskStats.published || 0}}</text>
+          <text class="grid-label">我发布的</text>
+        </view>
+        <view class="grid-item" bindtap="navigateToMyAccepted">
+          <text class="grid-count">{{taskStats.accepted || 0}}</text>
+          <text class="grid-label">我接单的</text>
+        </view>
+        <view class="grid-item" bindtap="navigateToMyCompleted">
+          <text class="grid-count">{{taskStats.completed || 0}}</text>
+          <text class="grid-label">已完成的</text>
+        </view>
+        <view class="grid-item" bindtap="navigateToMyFavorites">
+          <text class="grid-count">{{taskStats.favorites || 0}}</text>
+          <text class="grid-label">收藏的</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="menu-section">
+      <view class="menu-item" bindtap="navigateToMyWallet">
+        <view class="menu-icon">💰</view>
+        <text class="menu-text">我的钱包</text>
+        <text class="menu-extra">{{wallet.balance || 0}}元</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToAddress">
+        <view class="menu-icon">🏠</view>
+        <text class="menu-text">收货地址</text>
+        <text class="menu-extra">{{addressCount || 0}}个</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToEditProfile">
+        <view class="menu-icon">👤</view>
+        <text class="menu-text">编辑资料</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToSettings">
+        <view class="menu-icon">⚙️</view>
+        <text class="menu-text">系统设置</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToAbout">
+        <view class="menu-icon">ℹ️</view>
+        <text class="menu-text">关于我们</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToFeedback">
+        <view class="menu-icon">💬</view>
+        <text class="menu-text">意见反馈</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 退出登录 -->
+    <view class="logout-section">
+      <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+    </view>
+  </view>
+</view>

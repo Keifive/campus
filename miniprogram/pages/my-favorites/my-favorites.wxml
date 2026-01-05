@@ -1,0 +1,57 @@
+<!-- pages/my-favorites/my-favorites.wxml -->
+<view class="container">
+  <!-- 顶部统计 -->
+  <view class="top-stats">
+    <view class="stats-content">
+      <view class="stats-icon">⭐</view>
+      <view class="stats-info">
+        <view class="stats-title">我的收藏</view>
+        <view class="stats-desc">共收藏 {{favoriteList.length || 0}} 个任务</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 收藏列表 -->
+  <scroll-view class="favorite-list" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 收藏项 -->
+    <view class="favorite-item" wx:for="{{favoriteList}}" wx:key="id">
+      <view class="favorite-header">
+        <view class="task-type {{item.type}}">
+          {{item.type === 'express' ? '快递' : item.type === 'buy' ? '代买' : item.type === 'urgent' ? '急事' : item.type === 'rent' ? '租借' : '陪替'}}
+        </view>
+        <view class="task-status {{item.status}}">
+          {{item.status === 'pending' ? '待接单' : item.status === 'accepted' ? '已接单' : '已完成'}}
+        </view>
+        <view class="task-reward">¥{{item.price || item.reward}}</view>
+      </view>
+      
+      <view class="task-content">
+        <view class="task-title">{{item.title || item.goods || '收藏任务'}}</view>
+        <view class="task-info">
+          <text>📅 {{item.createTime}}</text>
+          <text>⏱️ {{item.deadline}}</text>
+        </view>
+        <view class="task-publisher">
+          <text>发布人: {{item.publisher}}</text>
+        </view>
+      </view>
+      
+      <view class="favorite-actions">
+        <button class="action-btn accept" wx:if="{{item.status === 'pending'}}" catchtap="acceptTask" data-id="{{item.id}}" data-type="{{item.type}}">
+          立即接单
+        </button>
+        <button class="action-btn remove" catchtap="removeFavorite" data-id="{{item.id}}">
+          取消收藏
+        </button>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{favoriteList.length === 0}}" class="empty-state">
+      <view class="empty-icon">⭐</view>
+      <text class="empty-title">暂无收藏的任务</text>
+      <text class="empty-desc">在首页遇到感兴趣的任务可以收藏哦！</text>
+      <button class="empty-btn" bindtap="goToIndex">去首页逛逛</button>
+    </view>
+  </scroll-view>
+</view>

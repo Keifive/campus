@@ -1,0 +1,101 @@
+<!-- pages/about/about.wxml -->
+<view class="about-page">
+  <!-- 应用信息 -->
+  <view class="app-info-section">
+    <image class="app-logo" src="/images/app-logo.png" mode="aspectFit"></image>
+    <text class="app-name">校园代取</text>
+    <text class="app-version">版本 {{appVersion}}</text>
+    <text class="app-slogan">让校园生活更便捷</text>
+  </view>
+
+  <!-- 功能介绍 -->
+  <view class="features-section">
+    <text class="section-title">主要功能</text>
+    <view class="features-grid">
+      <view class="feature-item">
+        <view class="feature-icon">📦</view>
+        <text class="feature-title">快递代取</text>
+        <text class="feature-desc">一键发布，快速取件</text>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">🏃</view>
+        <text class="feature-title">急事代办</text>
+        <text class="feature-desc">校园跑腿，急你所急</text>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">🛒</view>
+        <text class="feature-title">代买服务</text>
+        <text class="feature-desc">校内代购，方便快捷</text>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">👥</view>
+        <text class="feature-title">顺风单</text>
+        <text class="feature-desc">顺路接单，高效省钱</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 团队介绍 -->
+  <view class="team-section">
+    <text class="section-title">开发团队</text>
+    <view class="team-members">
+      <block wx:for="{{teamMembers}}" wx:key="id">
+        <view class="member-card">
+          <image class="member-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <text class="member-name">{{item.name}}</text>
+          <text class="member-role">{{item.role}}</text>
+          <text class="member-desc">{{item.desc}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="contact-section">
+    <text class="section-title">联系我们</text>
+    <view class="contact-list">
+      <view class="contact-item" bindtap="copyContact" data-type="email">
+        <view class="contact-icon">📧</view>
+        <view class="contact-info">
+          <text class="contact-type">邮箱</text>
+          <text class="contact-value">{{contactInfo.email}}</text>
+        </view>
+        <text class="copy-btn">复制</text>
+      </view>
+      
+      <view class="contact-item" bindtap="makePhoneCall">
+        <view class="contact-icon">📞</view>
+        <view class="contact-info">
+          <text class="contact-type">客服电话</text>
+          <text class="contact-value">{{contactInfo.phone}}</text>
+        </view>
+        <text class="call-btn">拨打</text>
+      </view>
+      
+      <view class="contact-item" bindtap="openLocation">
+        <view class="contact-icon">📍</view>
+        <view class="contact-info">
+          <text class="contact-type">地址</text>
+          <text class="contact-value">{{contactInfo.address}}</text>
+        </view>
+        <text class="map-btn">地图</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版权信息 -->
+  <view class="copyright-section">
+    <text class="copyright-text">© 2023 汕头大学计算机系</text>
+    <text class="copyright-text">校园代取项目组 版权所有</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-section">
+    <button class="action-btn share-btn" bindtap="shareApp" open-type="share">
+      <text>分享给朋友</text>
+    </button>
+    <button class="action-btn rate-btn" bindtap="rateApp">
+      <text>评价我们</text>
+    </button>
+  </view>
+</view>

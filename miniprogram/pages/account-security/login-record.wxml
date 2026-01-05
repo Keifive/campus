@@ -1,0 +1,28 @@
+<!--pages/account-security/login-record.wxml-->
+<view class="record-container">
+  <view class="record-header">
+    <text>最近登录记录</text>
+    <text class="record-count">共 {{records.length}} 条</text>
+  </view>
+  
+  <view class="record-list">
+    <view class="record-item" wx:for="{{records}}" wx:key="index">
+      <view class="record-time">{{item.time}}</view>
+      
+      <view class="record-info">
+        <view class="record-device">
+          <text class="device-label">设备：</text>
+          <text>{{item.device}}</text>
+        </view>
+        <view class="record-location">
+          <text class="location-label">地点：</text>
+          <text>{{item.location}}</text>
+        </view>
+      </view>
+      
+      <view class="record-status" wx:if="{{item.isRisk}}">
+        <text class="risk-tag">有风险</text>
+      </view>
+    </view>
+  </view>
+</view>

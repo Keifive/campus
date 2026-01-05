@@ -1,0 +1,38 @@
+<!--pages/ques/ques-publish.wxml-->
+<view class="publish-page">
+  <view class="form-card">
+    <!-- 问题内容输入 -->
+    <view class="form-item">
+      <text class="form-label required">问题描述</text>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请描述您遇到的问题..." 
+        maxlength="500"
+        value="{{content}}"
+        bindinput="onContentInput"
+      ></textarea>
+      <text class="char-count">{{content.length}}/500</text>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-item">
+      <text class="form-label">添加图片</text>
+      <view class="image-upload">
+        <view class="image-item" wx:for="{{images}}" wx:key="index">
+          <image src="{{item}}" mode="aspectFill"/>
+          <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+        </view>
+        <view class="upload-btn" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+          <text class="upload-icon">+</text>
+          <text class="upload-text">添加图片</text>
+        </view>
+      </view>
+      <text class="tips">最多上传9张图片</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn" bindtap="submitQues">
+    <text>发布问题</text>
+  </view>
+</view>

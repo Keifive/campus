@@ -1,0 +1,76 @@
+<!--pages/rent/rent.wxml-->
+
+<view class="container">
+  <!-- 搜索区域 -->
+  <view class="search-section">
+    <view class="search-box" bindtap="goToSearch">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索" placeholder-class="placeholder-text" disabled="{{true}}"/>
+    </view>
+    <view class="my-btn" bindtap="goToMyOrders">
+      <text>我的</text>
+    </view>
+  </view>
+
+  <!-- 顶部tab栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <text>待接单</text>
+      <view class="tab-underline" wx:if="{{activeTab === 0}}"></view>
+    </view>
+    <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <text>已接单</text>
+      <view class="tab-underline" wx:if="{{activeTab === 1}}"></view>
+    </view>
+    <view class="tab-item {{activeTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+      <text>已完成</text>
+      <view class="tab-underline" wx:if="{{activeTab === 2}}"></view>
+    </view>
+    <view class="tab-item {{activeTab === 3 ? 'active' : ''}}" bindtap="switchTab" data-index="3">
+      <text>已过期</text>
+      <view class="tab-underline" wx:if="{{activeTab === 3}}"></view>
+    </view>
+    <view class="tab-item {{activeTab === 4 ? 'active' : ''}}" bindtap="switchTab" data-index="4">
+      <text>全部</text>
+      <view class="tab-underline" wx:if="{{activeTab === 4}}"></view>
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view class="order-list" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <block wx:if="{{filteredOrders.length > 0}}">
+      <view class="order-card" wx:for="{{filteredOrders}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <!-- 订单头部 -->
+        <view class="order-header">
+          <view class="order-price">
+            <text class="price-value">{{item.price}}</text>
+          </view>
+          <view class="order-time">{{item.deadline}}</view>
+          <view class="order-status {{item.statusClass}}">{{item.statusText}}</view>
+        </view>
+        
+        <!-- 订单内容 -->
+        <view class="order-content">
+          <view class="order-title">{{item.title}}</view>
+          <view class="order-desc">{{item.description}}</view>
+        </view>
+
+        <!-- 紧急标签 -->
+        <view class="urgent-tag" wx:if="{{item.isUrgent}}">
+          <text>{{item.urgentLevel}}</text>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{filteredOrders.length === 0}}">
+      <text class="empty-text">暂无记录哦~</text>
+    </view>
+  </scroll-view>
+
+  <!-- 底部发布按钮 -->
+  <view class="publish-btn" bindtap="publishOrder">
+    <text class="publish-icon">+</text>
+    <text class="publish-text">发布租借信息</text>
+  </view>
+</view>

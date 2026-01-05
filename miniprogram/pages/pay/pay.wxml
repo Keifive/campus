@@ -1,0 +1,24 @@
+<!-- pages/pay/pay.wxml -->
+<!-- 页面整体容器，引用wxss中的样式 -->
+<wxs module="fmt" src="../../utils/tools.wxs"></wxs>
+<view class="page-container">
+  <!-- 订单基础信息展示 -->
+  <view class="order-info">
+    <view class="info-item">
+      <text class="label">订单编号：</text>
+      <text class="value">{{orderId}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">应付金额：</text>
+      <text class="amount">¥{{fmt.toFix(totalFee / 100)}}</text>
+    </view>
+  </view>
+
+  <!-- 立即支付按钮，绑定支付事件 -->
+  <button bindtap="handlePay" class="pay-button" type="primary">立即支付</button>
+
+  <!-- 支付提示信息 -->
+  <view class="tip-text">
+    温馨提示：15分钟内未支付将自动取消订单，支付结果以实际到账为准
+  </view>
+</view>

@@ -1,0 +1,133 @@
+<!--pages/express/express-detail.wxml-->
+
+<view class="container">
+  <!-- 顶部分享按钮 -->
+  <button class="top-share-btn" open-type="share">
+    <text class="share-icon">↗</text>
+    <text class="share-text">分享</text>
+  </button>
+
+  <!-- 订单状态标签 -->
+  <view class="status-badge {{orderDetail.statusClass}}">
+    <text>{{orderDetail.statusText}}</text>
+  </view>
+
+  <!-- 订单卡片 -->
+  <view class="order-card">
+    <!-- 订单标题 -->
+    <view class="order-title">{{orderDetail.pickupAddress}} - {{orderDetail.deliveryAddress}}</view>
+    
+    <!-- 发布信息 -->
+    <view class="order-meta">
+      <text class="meta-date">📅 {{orderDetail.createTime}}</text>
+      <text class="meta-type">代取快递</text>
+    </view>
+
+    <!-- 订单详情列表 -->
+    <view class="detail-list">
+      <view class="detail-item">
+        <text class="detail-label">接单截止</text>
+        <text class="detail-value highlight">{{orderDetail.deadline}} ⏰</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">取货地址</text>
+        <text class="detail-value">{{orderDetail.pickupAddress}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">取货详情</text>
+        <text class="detail-value">{{orderDetail.pickupDetail}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">送货地址</text>
+        <text class="detail-value">{{orderDetail.deliveryAddress}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">送货详情</text>
+        <text class="detail-value">{{orderDetail.deliveryDetail}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">打赏金额(元)</text>
+        <text class="detail-value price">{{orderDetail.price}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">发布者</text>
+        <text class="detail-value">{{orderDetail.publisher}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="detail-label">联系电话</text>
+        <text class="detail-value phone" bindtap="contactPublisher">{{orderDetail.publisherPhone}} 📞</text>
+      </view>
+      
+      <view class="detail-item" wx:if="{{orderDetail.accepter}}">
+        <text class="detail-label">接单者</text>
+        <text class="detail-value">{{orderDetail.accepter}}</text>
+      </view>
+      
+      <view class="detail-item" wx:if="{{orderDetail.accepterPhone}}">
+        <text class="detail-label">接单者电话</text>
+        <text class="detail-value phone" bindtap="contactAccepter">{{orderDetail.accepterPhone}} 📞</text>
+      </view>
+      
+      <view class="detail-item" wx:if="{{orderDetail.description}}">
+        <text class="detail-label">详细描述</text>
+        <text class="detail-value">{{orderDetail.description}}</text>
+      </view>
+    </view>
+
+    <!-- 接单人信息 -->
+    <view class="accepter-section" wx:if="{{orderDetail.status !== 'pending'}}">
+      <view class="section-title">接单人信息</view>
+      <view class="accepter-info">
+        <text>{{orderDetail.showAccepter ? orderDetail.accepterName : '仅发起人或者接单人可见'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮首页按钮 -->
+  <view class="home-btn" bindtap="goHome">
+    <text class="home-icon">🏠</text>
+    <text class="home-text">首页</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="action-btn favorite {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+      <text class="action-icon">{{isFavorite ? '★' : '☆'}}</text>
+      <text>收藏</text>
+    </view>
+    
+    <!-- 待接单状态显示接单按钮 -->
+    <block wx:if="{{orderDetail.status === 'pending'}}">
+      <view class="main-action accept" bindtap="acceptOrder">
+        <text>我要接单</text>
+      </view>
+    </block>
+    
+    <!-- 已接单状态显示取消和完成按钮 -->
+    <block wx:if="{{orderDetail.status === 'accepted'}}">
+      <view class="main-action cancel" bindtap="cancelOrder">
+        <text>取消接单</text>
+      </view>
+      <view class="main-action pay" bindtap="goToPayment">
+        <text>去支付</text>
+      </view>
+      <view class="main-action complete" bindtap="completeOrder">
+        <text>完成订单</text>
+      </view>
+    </block>
+    
+    <!-- 已完成或已过期状态 -->
+    <block wx:if="{{orderDetail.status === 'completed' || orderDetail.status === 'expired'}}">
+      <view class="main-action disabled">
+        <text>{{orderDetail.status === 'completed' ? '已完成' : '已过期'}}</text>
+      </view>
+    </block>
+  </view>
+</view>

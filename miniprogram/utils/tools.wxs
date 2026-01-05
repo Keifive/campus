@@ -1,0 +1,9 @@
+var tools = {
+  toFix: function(value) {
+    return value.toFixed(2)
+  }
+}
+
+module.exports = {
+  toFix: tools.toFix
+}

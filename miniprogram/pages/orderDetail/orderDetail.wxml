@@ -1,0 +1,41 @@
+<view class="page-container" wx:if="{{order}}">
+  <view class="section">
+    <text class="label">订单编号：</text>
+    <text class="value">{{order.id}}</text>
+  </view>
+  <view class="section">
+    <text class="label">状态：</text>
+    <text class="value {{order.statusClass}}">{{order.statusText}}</text>
+  </view>
+  <view class="section" wx:if="{{order.price}}">
+    <text class="label">金额：</text>
+    <text class="value">¥{{order.price}}</text>
+  </view>
+  <view class="section" wx:if="{{order.title}}">
+    <text class="label">标题：</text>
+    <text class="value">{{order.title}}</text>
+  </view>
+  <view class="section" wx:if="{{order.description}}">
+    <text class="label">描述：</text>
+    <text class="value">{{order.description}}</text>
+  </view>
+  <view class="section" wx:if="{{order.pickupAddress}}">
+    <text class="label">取件地址：</text>
+    <text class="value">{{order.pickupAddress}} {{order.pickupDetail}}</text>
+  </view>
+  <view class="section" wx:if="{{order.deliveryAddress}}">
+    <text class="label">收件地址：</text>
+    <text class="value">{{order.deliveryAddress}} {{order.deliveryDetail}}</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="btn-group">
+    <button type="primary" wx:if="{{order.status==='pending'}}" bindtap="handleAccept">接单</button>
+    <button type="warn" wx:if="{{order.status==='accepted'}}" bindtap="handleComplete">完成订单</button>
+    <button type="default" wx:if="{{order.status==='accepted'}}" bindtap="handleCancel">取消接单</button>
+  </view>
+</view>
+
+<view wx:else class="empty">
+  <text>订单数据加载中...</text>
+</view>

@@ -1,0 +1,47 @@
+<!-- pages/address/address.wxml -->
+<view class="address-page">
+  <!-- 地址列表 -->
+  <view class="address-list">
+    <block wx:for="{{addressList}}" wx:key="id">
+      <view class="address-item {{item.isDefault ? 'default-item' : ''}}" 
+            data-index="{{index}}" bindtap="selectAddress">
+        <view class="address-header">
+          <text class="address-name">{{item.name}}</text>
+          <text class="address-phone">{{item.phone}}</text>
+          <view wx:if="{{item.isDefault}}" class="default-tag">默认</view>
+        </view>
+        
+        <view class="address-content">
+          <text class="address-text">{{item.area}} {{item.detail}}</text>
+        </view>
+        
+        <view class="address-actions">
+          <view class="action-btn edit-btn" data-id="{{item.id}}" bindtap="editAddress" catchtap>
+            <text>编辑</text>
+          </view>
+          <view class="action-btn delete-btn" data-id="{{item.id}}" bindtap="deleteAddress" catchtap>
+            <text>删除</text>
+          </view>
+          <view wx:if="{{!item.isDefault}}" class="action-btn set-default-btn" 
+                data-id="{{item.id}}" bindtap="setDefaultAddress" catchtap>
+            <text>设为默认</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view wx:if="{{addressList.length === 0}}" class="empty-state">
+      <view class="empty-icon">📍</view>
+      <text class="empty-text">暂无收货地址</text>
+      <text class="empty-subtext">添加地址以便接收物品</text>
+    </view>
+  </view>
+
+  <!-- 添加新地址按钮 -->
+  <view class="add-btn-container">
+    <button class="add-address-btn" bindtap="addNewAddress">
+      <text>＋ 添加新地址</text>
+    </button>
+  </view>
+</view>

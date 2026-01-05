@@ -1,0 +1,59 @@
+<!--index.wxml-->
+
+<view class="page">
+  <!-- 顶部主视觉模块：突出品牌色并展示核心信息 -->
+  <view class="hero">
+    <view class="hero__head">
+      <view class="hero__badge">校园助手</view>
+      <text class="hero__title">校园代办</text>
+      <text class="hero__subtitle">校园代办工具，解决你的所有琐事</text>
+    </view>
+
+    <view class="hero__stats">
+      <view class="stat-card" wx:for="{{stats}}" wx:key="label">
+        <text class="stat-number">{{item.value}}</text>
+        <text class="stat-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 服务入口：卡片式列表，保持整体风格一致 -->
+  <view class="section-header">
+    <text class="section-title">服务入口</text>
+    <text class="section-desc">请选择所需服务</text>
+  </view>
+  <view class="service-grid">
+    <view
+      class="service-card"
+      wx:for="{{services}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onServiceTap"
+    >
+      <view class="service-icon" style="background: {{item.color}}">
+        <text>{{item.icon}}</text>
+      </view>
+      <view class="service-info">
+        <text class="service-title">{{item.title}}</text>
+        <text class="service-desc">{{item.desc}}</text>
+      </view>
+      <text class="service-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 今日速览：公告与亮点提示 -->
+  <view class="section-header">
+    <text class="section-title">今日速览</text>
+    <text class="section-desc">公告提示与优惠信息</text>
+  </view>
+  <view class="highlight-list">
+    <view class="highlight-card" wx:for="{{highlights}}" wx:key="title">
+      <text class="highlight-tag">{{item.tag}}</text>
+      <view class="highlight-body">
+        <text class="highlight-title">{{item.title}}</text>
+        <text class="highlight-content">{{item.content}}</text>
+      </view>
+  </view>  
+
+</view>
+</view> 

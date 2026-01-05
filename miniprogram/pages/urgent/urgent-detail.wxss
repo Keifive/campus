@@ -1,0 +1,274 @@
+/* pages/urgent/urgent-detail.wxss */
+
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+/* 顶部分享按钮 */
+.top-share-btn {
+  position: fixed;
+  left: 20rpx;
+  bottom: 280rpx;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 70rpx;
+  background: #4CAF50;
+  border-radius: 12rpx;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.3);
+}
+
+.top-share-btn::after {
+  border: none;
+}
+
+.share-icon {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.share-text {
+  font-size: 18rpx;
+  color: #fff;
+  margin-top: 4rpx;
+}
+
+/* 状态标签 */
+.status-badge {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  z-index: 10;
+}
+
+.status-badge.pending {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border: 2rpx solid #4CAF50;
+}
+
+.status-badge.accepted {
+  background: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+  border: 2rpx solid #2196F3;
+}
+
+.status-badge.completed {
+  background: rgba(158, 158, 158, 0.1);
+  color: #9E9E9E;
+  border: 2rpx solid #9E9E9E;
+}
+
+.status-badge.expired {
+  background: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+  border: 2rpx solid #FF9800;
+}
+
+/* 订单卡片 */
+.order-card {
+  background: #fff;
+  margin: 60rpx 20rpx 20rpx;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+/* 订单标题 */
+.order-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  line-height: 1.4;
+}
+
+/* 发布信息 */
+.order-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.meta-date, .meta-type {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+/* 详情列表 */
+.detail-list {
+  margin-top: 20rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #666;
+  min-width: 160rpx;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.detail-value.highlight {
+  color: #FF5722;
+  font-weight: 500;
+}
+
+.detail-value.price {
+  color: #FF5722;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.phone {
+  color: #4CAF50;
+  text-decoration: underline;
+}
+
+/* 悬浮首页按钮 */
+.home-btn {
+  position: fixed;
+  left: 20rpx;
+  bottom: 370rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
+.home-icon {
+  font-size: 28rpx;
+}
+
+.home-text {
+  font-size: 18rpx;
+  color: #666;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 按钮重置样式 - 只针对分享按钮 */
+button.action-btn.share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0 20rpx;
+  margin: 0;
+  line-height: normal;
+  font-size: 22rpx;
+  color: #666;
+}
+
+button.action-btn.share::after {
+  border: none;
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-bottom: 4rpx;
+}
+
+.action-btn.favorite.active {
+  color: #FF5722;
+}
+
+.main-action {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-left: 30rpx;
+}
+
+.main-action.accept {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.main-action.cancel {
+  background: #FF5722;
+  color: #fff;
+  flex: 0.3;
+}
+
+.main-action.pay {
+  background: #FF9800;
+  color: #fff;
+  flex: 0.35;
+  margin-left: 20rpx;
+}
+
+.main-action.complete {
+  background: #4CAF50;
+  color: #fff;
+  flex: 0.35;
+  margin-left: 20rpx;
+}
+
+.main-action.disabled {
+  background: #e0e0e0;
+  color: #999;
+}

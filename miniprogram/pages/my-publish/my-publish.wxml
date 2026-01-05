@@ -1,0 +1,96 @@
+<!-- pages/my-publish/my-publish.wxml -->
+<view class="my-publish-page">
+  <!-- 状态筛选 -->
+  <view class="filter-section">
+    <scroll-view class="filter-scroll" scroll-x="true">
+      <view class="filter-list">
+        <view 
+          class="filter-item {{activeFilter === 'all' ? 'active' : ''}}" 
+          data-filter="all"
+          bindtap="changeFilter"
+        >
+          全部
+        </view>
+        <view 
+          class="filter-item {{activeFilter === 'pending' ? 'active' : ''}}" 
+          data-filter="pending"
+          bindtap="changeFilter"
+        >
+          待接单
+        </view>
+        <view 
+          class="filter-item {{activeFilter === 'accepted' ? 'active' : ''}}" 
+          data-filter="accepted"
+          bindtap="changeFilter"
+        >
+          已接单
+        </view>
+        <view 
+          class="filter-item {{activeFilter === 'completed' ? 'active' : ''}}" 
+          data-filter="completed"
+          bindtap="changeFilter"
+        >
+          已完成
+        </view>
+        <view 
+          class="filter-item {{activeFilter === 'cancelled' ? 'active' : ''}}" 
+          data-filter="cancelled"
+          bindtap="changeFilter"
+        >
+          已取消
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <block wx:if="{{orderList.length > 0}}">
+      <block wx:for="{{orderList}}" wx:key="id">
+        <!-- 订单卡片 -->
+        <view class="order-card" data-id="{{item.id}}" bindtap="viewOrderDetail">
+          <!-- 订单状态标签 -->
+          <view class="order-status {{getStatusClass(item.status)}}">
+            {{getStatusText(item.status)}}
+          </view>
+          
+          <!-- 订单基本信息 -->
+          <view class="order-info">
+            <view class="order-title">{{item.title}}</view>
+            <view class="order-detail">
+              <text class="order-type">{{item.type === 'express' ? '快递代取' : item.type === 'shopping' ? '代买服务' : '急事代办'}}</text>
+              <text class="order-reward">酬劳: ¥{{item.reward}}</text>
+            </view>
+            <view class="order-time">
+              发布时间: {{formatTime(item.createTime)}}
+            </view>
+            
+            <!-- 订单操作按钮 -->
+            <view class="order-actions" wx:if="{{item.status === 'pending'}}">
+              <button class="action-btn cancel-btn" data-id="{{item.id}}" bindtap="cancelOrder" catchtap>取消订单</button>
+              <button class="action-btn edit-btn" data-id="{{item.id}}" bindtap="editOrder" catchtap>编辑</button>
+            </view>
+            
+            <!-- 接单人信息 -->
+            <view class="acceptor-info" wx:if="{{item.status === 'accepted' || item.status === 'completed'}}">
+             <!-- <image class="acceptor-avatar" src="{{item.acceptorAvatar || '/images/default-avatar.png'}}"></image>-->
+              <text class="acceptor-name">{{item.acceptorName || '未知用户'}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+    <!--  <image class="empty-icon" src="/images/empty-order.png"></image>-->
+      <text class="empty-text">暂无发布的订单</text>
+      <button class="empty-btn" bindtap="goToCreate">去发布订单</button>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <text class="loading-text">{{isLoading ? '加载中...' : '上拉加载更多'}}</text>
+  </view>
+</view>

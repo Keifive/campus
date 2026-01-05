@@ -1,0 +1,35 @@
+/* pages/account-security/account-security.wxss */
+.security-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.security-list {
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.security-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.security-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.security-desc {
+  color: #999;
+  font-size: 14px;
+  margin-right: 10px;
+  flex: 1;
+  text-align: right;
+}
+
+.danger-item .security-label {
+  color: #f53f3f;
+}

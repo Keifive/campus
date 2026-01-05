@@ -1,0 +1,124 @@
+<!-- pages/settings/settings.wxml -->
+<view class="settings-page">
+  <!-- 账号设置 -->
+  <view class="settings-section">
+    <view class="section-title">账号设置</view>
+    
+    <view class="settings-item" bindtap="navigateToProfile">
+      <view class="item-left">
+        <view class="item-icon">👤</view>
+        <text class="item-text">个人信息</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    
+    <view class="settings-item" bindtap="navigateToSecurity">
+      <view class="item-left">
+        <view class="item-icon">🔒</view>
+        <text class="item-text">账号安全</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    
+    <view class="settings-item" bindtap="navigateToPrivacy">
+      <view class="item-left">
+        <view class="item-icon">👁️</view>
+        <text class="item-text">隐私设置</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 通知设置 -->
+  <view class="settings-section">
+    <view class="section-title">通知设置</view>
+    
+    <view class="settings-item switch-item">
+      <view class="item-left">
+        <view class="item-icon">🔔</view>
+        <text class="item-text">任务通知</text>
+      </view>
+      <switch checked="{{notification.task}}" bindchange="toggleTaskNotification" 
+              color="#07c160" />
+    </view>
+    
+    <view class="settings-item switch-item">
+      <view class="item-left">
+        <view class="item-icon">💬</view>
+        <text class="item-text">消息提醒</text>
+      </view>
+      <switch checked="{{notification.message}}" bindchange="toggleMessageNotification" 
+              color="#07c160" />
+    </view>
+    
+    <view class="settings-item switch-item">
+      <view class="item-left">
+        <view class="item-icon">📢</view>
+        <text class="item-text">系统公告</text>
+      </view>
+      <switch checked="{{notification.system}}" bindchange="toggleSystemNotification" 
+              color="#07c160" />
+    </view>
+  </view>
+
+  <!-- 通用设置 -->
+  <view class="settings-section">
+    <view class="section-title">通用设置</view>
+    
+    <view class="settings-item" bindtap="clearCache">
+      <view class="item-left">
+        <view class="item-icon">🗑️</view>
+        <text class="item-text">清除缓存</text>
+      </view>
+      <view class="item-right">
+        <text class="cache-size">{{cacheSize}}</text>
+        <text class="item-arrow">›</text>
+      </view>
+    </view>
+    
+    <view class="settings-item" bindtap="checkUpdate">
+      <view class="item-left">
+        <view class="item-icon">🔄</view>
+        <text class="item-text">检查更新</text>
+      </view>
+      <view class="item-right">
+        <text class="version-tag">当前版本 {{appVersion}}</text>
+        <text class="item-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于与帮助 -->
+  <view class="settings-section">
+    <view class="section-title">关于与帮助</view>
+    
+    <view class="settings-item" bindtap="navigateToAbout">
+      <view class="item-left">
+        <view class="item-icon">ℹ️</view>
+        <text class="item-text">关于我们</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    
+    <view class="settings-item" bindtap="navigateToFeedback">
+      <view class="item-left">
+        <view class="item-icon">💬</view>
+        <text class="item-text">意见反馈</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    
+    <view class="settings-item" bindtap="showHelpCenter">
+      <view class="item-left">
+        <view class="item-icon">❓</view>
+        <text class="item-text">帮助中心</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+</view>

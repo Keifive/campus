@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "校园代办",
+  "usingComponents": {
+    "cloud-tip-modal": "/components/cloudTipModal/index"
+  }
+}

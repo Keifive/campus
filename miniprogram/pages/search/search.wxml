@@ -1,0 +1,72 @@
+<!-- pages/search/search.wxml -->
+<view class="search-page">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <icon class="search-icon" type="search" size="16"></icon>
+      <input 
+        class="search-input" 
+        placeholder="搜索订单名称" 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearch"
+        focus="{{true}}"
+      />
+      <icon 
+        wx:if="{{searchKeyword}}" 
+        class="clear-icon" 
+        type="clear" 
+        size="16" 
+        bindtap="clearSearch"
+      ></icon>
+    </view>
+    <view class="cancel-btn" bindtap="goBack">取消</view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view class="search-results" wx:if="{{searchResults.length > 0}}">
+    <view class="results-title">搜索结果（{{searchResults.length}}）</view>
+    <block wx:for="{{searchResults}}" wx:key="id">
+      <view class="order-card" bindtap="viewOrderDetail" data-id="{{item.id}}" data-type="{{item.type}}">
+        <view class="order-header">
+          <view class="order-title">{{item.title || item.pickupAddress + ' - ' + item.deliveryAddress}}</view>
+          <view class="order-status {{item.statusClass}}">{{item.statusText}}</view>
+        </view>
+        <view class="order-info">
+          <text class="order-type">{{item.typeText}}</text>
+          <text class="order-price">¥{{item.price}}</text>
+        </view>
+        <view class="order-time">{{item.createTime}}</view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 无搜索结果 -->
+  <view class="empty-result" wx:if="{{hasSearched && searchResults.length === 0}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">无该订单~</text>
+  </view>
+
+  <!-- 历史搜索记录 -->
+  <view class="search-history" wx:if="{{!hasSearched && searchHistory.length > 0}}">
+    <view class="history-header">
+      <text class="history-title">历史搜索</text>
+      <text class="clear-history" bindtap="clearHistory">清空</text>
+    </view>
+    <view class="history-list">
+      <block wx:for="{{searchHistory}}" wx:key="index">
+        <view class="history-item" bindtap="searchFromHistory" data-keyword="{{item}}">
+          <icon class="history-icon" type="search" size="14"></icon>
+          <text class="history-keyword">{{item}}</text>
+          <icon class="delete-icon" type="clear" size="14" bindtap="deleteHistoryItem" data-index="{{index}}" catchtap></icon>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 默认状态 -->
+  <view class="search-tips" wx:if="{{!hasSearched && searchHistory.length === 0}}">
+    <text class="tips-icon">💡</text>
+    <text class="tips-text">输入订单名称进行搜索</text>
+  </view>
+</view>

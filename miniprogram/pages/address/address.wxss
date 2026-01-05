@@ -1,0 +1,138 @@
+/* pages/address/address.wxss */
+.address-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+/* 地址列表 */
+.address-list {
+  padding: 20rpx;
+}
+
+.address-item {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.address-item.default-item {
+  border: 2rpx solid #07c160;
+}
+
+.address-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.address-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.address-phone {
+  font-size: 28rpx;
+  color: #666;
+  flex: 1;
+}
+
+.default-tag {
+  background-color: #07c160;
+  color: white;
+  font-size: 22rpx;
+  padding: 6rpx 15rpx;
+  border-radius: 15rpx;
+}
+
+.address-content {
+  margin-bottom: 25rpx;
+}
+
+.address-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+
+.action-btn {
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  margin-left: 20rpx;
+  border-radius: 8rpx;
+}
+
+.edit-btn {
+  color: #07c160;
+  border: 1rpx solid #07c160;
+}
+
+.delete-btn {
+  color: #e64340;
+  border: 1rpx solid #e64340;
+}
+
+.set-default-btn {
+  color: #1890ff;
+  border: 1rpx solid #1890ff;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  color: #ddd;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+}
+
+.empty-subtext {
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+/* 添加按钮 */
+.add-btn-container {
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+  padding: 0 30rpx;
+}
+
+.add-address-btn {
+  width: 100%;
+  background-color: #07c160;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.add-address-btn::after {
+  border: none;
+}

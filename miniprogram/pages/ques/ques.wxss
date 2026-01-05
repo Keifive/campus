@@ -1,0 +1,159 @@
+/* pages/ques/ques.wxss */
+.ques-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+/* 问题列表 */
+.ques-list {
+  height: calc(100vh - 140rpx);
+  padding: 20rpx;
+}
+
+.ques-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+/* 问题头部 */
+.ques-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.user-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: #e0e0e0;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.publish-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 问题内容 */
+.ques-content {
+  margin-bottom: 20rpx;
+}
+
+.ques-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.ques-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.ques-img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+}
+
+/* 问题底部 */
+.ques-footer {
+  display: flex;
+  align-items: center;
+  gap: 40rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.footer-item .icon {
+  font-size: 32rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 200rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 底部按钮区域 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  border-top: 1rpx solid #f0f0f0;
+  box-shadow: 0 -4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+/* 我的发布按钮 */
+.my-ques-btn {
+  padding: 20rpx 30rpx;
+  background: #f5f5f5;
+  color: #666;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+  white-space: nowrap;
+}
+
+/* 发布问题按钮 */
+.publish-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4CAF50;
+  color: #fff;
+  padding: 20rpx 0;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);
+}
+
+.publish-icon {
+  font-size: 36rpx;
+  margin-right: 8rpx;
+}
+
+.publish-text {
+  font-size: 28rpx;
+  font-weight: 500;
+}

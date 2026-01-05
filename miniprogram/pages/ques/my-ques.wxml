@@ -1,0 +1,44 @@
+<!--pages/ques/my-ques.wxml-->
+<view class="my-ques-page">
+  <scroll-view class="ques-list" scroll-y="true">
+    <view class="ques-item" wx:for="{{myQuesList}}" wx:key="_id" bindtap="goToDetail" data-id="{{item._id}}">
+      <!-- 问题内容 -->
+      <view class="ques-content">
+        <text class="ques-text">{{item.content}}</text>
+        <view class="ques-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image class="ques-img" wx:for="{{item.images}}" wx:for-item="img" wx:key="index" src="{{img}}" mode="aspectFill"></image>
+        </view>
+      </view>
+
+      <!-- 统计信息 -->
+      <view class="ques-stats">
+        <text class="publish-time">{{item.publishTime}}</text>
+        <view class="stats-right">
+          <view class="stat-item">
+            <text class="icon">👍</text>
+            <text>{{item.likeCount || 0}}</text>
+          </view>
+          <view class="stat-item">
+            <text class="icon">💬</text>
+            <text>{{item.commentCount || 0}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-btns">
+        <view class="action-btn delete-btn" bindtap="deleteQues" data-id="{{item._id}}" catchtap>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{myQuesList.length === 0}}">
+      <text class="empty-text">您还没有发布过问题</text>
+      <view class="empty-btn" bindtap="goToPublish">
+        <text>去发布</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,86 @@
+<!--pages/ques/ques-detail.wxml-->
+<view class="detail-page">
+  <scroll-view class="content-area" scroll-y="true">
+    <!-- 问题详情 -->
+    <view class="ques-detail">
+      <!-- 用户信息 -->
+      <view class="user-section">
+        <image class="user-avatar" src="{{quesDetail.userAvatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <text class="user-name">{{quesDetail.userName}}</text>
+          <text class="publish-time">{{quesDetail.publishTime}}</text>
+        </view>
+      </view>
+
+      <!-- 问题内容 -->
+      <view class="ques-content">
+        <text class="ques-text">{{quesDetail.content}}</text>
+        <view class="ques-images" wx:if="{{quesDetail.images && quesDetail.images.length > 0}}">
+          <image 
+            class="ques-img" 
+            wx:for="{{quesDetail.images}}" 
+            wx:key="index" 
+            src="{{item}}" 
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-url="{{item}}"
+          ></image>
+        </view>
+      </view>
+
+      <!-- 点赞统计 -->
+      <view class="stats-bar">
+        <view class="stat-item">
+          <text class="icon">👍</text>
+          <text>{{quesDetail.likeCount || 0}} 人点赞</text>
+        </view>
+        <view class="stat-item">
+          <text class="icon">💬</text>
+          <text>{{quesDetail.commentCount || 0}} 条评论</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评论列表 -->
+    <view class="comment-section">
+      <view class="section-title">全部评论</view>
+      <view class="comment-list" wx:if="{{quesDetail.comments && quesDetail.comments.length > 0}}">
+        <view class="comment-item" wx:for="{{quesDetail.comments}}" wx:key="id">
+          <image class="comment-avatar" src="{{item.userAvatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+          <view class="comment-content">
+            <text class="comment-user">{{item.userName}}</text>
+            <text class="comment-text">{{item.content}}</text>
+            <text class="comment-time">{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="empty-comment" wx:else>
+        <text>暂无评论，快来抢沙发吧~</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="comment-input" bindtap="focusInput">
+      <input 
+        class="input" 
+        placeholder="说点什么..." 
+        value="{{commentText}}"
+        bindinput="onCommentInput"
+        bindconfirm="submitComment"
+        focus="{{inputFocus}}"
+      />
+    </view>
+    <view class="action-btns">
+      <view class="action-btn {{quesDetail.isLiked ? 'liked' : ''}}" bindtap="toggleLike">
+        <text class="icon">{{quesDetail.isLiked ? '❤️' : '🤍'}}</text>
+        <text>{{quesDetail.isLiked ? '已赞' : '点赞'}}</text>
+      </view>
+      <view class="action-btn" bindtap="submitComment">
+        <text class="icon">💬</text>
+        <text>评论</text>
+      </view>
+    </view>
+  </view>
+</view>

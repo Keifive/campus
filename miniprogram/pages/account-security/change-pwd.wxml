@@ -1,0 +1,48 @@
+<!--pages/account-security/change-pwd.wxml-->
+<view class="pwd-container">
+  <form bindsubmit="submitForm">
+    <view class="form-group">
+      <view class="form-label">原密码</view>
+      <input 
+        type="password" 
+        name="oldPwd" 
+        placeholder="请输入原密码" 
+        bindinput="handleInput"
+        data-field="oldPwd"
+        required
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">新密码</view>
+      <input 
+        type="password" 
+        name="newPwd" 
+        placeholder="请输入6-16位新密码" 
+        bindinput="handleInput"
+        data-field="newPwd"
+        required
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">确认新密码</view>
+      <input 
+        type="password" 
+        name="confirmPwd" 
+        placeholder="请再次输入新密码" 
+        bindinput="handleInput"
+        data-field="confirmPwd"
+        required
+      />
+    </view>
+    
+    <button 
+      form-type="submit" 
+      class="submit-btn"
+     
+    >
+      确认修改
+    </button>
+  </form>
+</view>

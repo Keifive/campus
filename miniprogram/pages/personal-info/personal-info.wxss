@@ -1,0 +1,54 @@
+/*pages/personal-info/personal-info.wxss*/
+.nav-bar {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.back-btn {
+  margin-right: 16px;
+}
+
+.nav-title {
+  font-size: 18px;
+  color: #333;
+  flex: 1;
+  text-align: center;
+}
+
+.info-list {
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.info-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.info-value {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 16px;
+}
+
+.avatar-value {
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

@@ -1,0 +1,79 @@
+<!-- pages/feedback/feedback.wxml -->
+<view class="feedback-page">
+  <!-- 反馈类型 -->
+  <view class="feedback-section">
+    <text class="section-title">反馈类型</text>
+    <view class="type-selector">
+      <block wx:for="{{feedbackTypes}}" wx:key="value">
+        <view class="type-item {{selectedType === item.value ? 'active' : ''}}" 
+              data-type="{{item.value}}" bindtap="selectType">
+          <text>{{item.label}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 反馈内容 -->
+  <view class="feedback-section">
+    <text class="section-title">反馈内容</text>
+    <textarea class="feedback-textarea" 
+              value="{{content}}" 
+              placeholder="请详细描述您遇到的问题或建议（至少10个字）"
+              placeholder-class="placeholder"
+              maxlength="500"
+              bindinput="onContentInput"
+              auto-height />
+    <view class="word-count">{{content.length}}/500</view>
+  </view>
+
+  <!-- 上传截图 -->
+  <view class="feedback-section">
+    <text class="section-title">上传截图（可选）</text>
+    <view class="image-uploader">
+      <block wx:for="{{images}}" wx:key="index">
+        <view class="image-item">
+          <image src="{{item}}" class="preview-image" mode="aspectFill"></image>
+          <view class="remove-btn" data-index="{{index}}" bindtap="removeImage">×</view>
+        </view>
+      </block>
+      
+      <view wx:if="{{images.length < 3}}" class="upload-btn" bindtap="chooseImage">
+        <view class="upload-icon">＋</view>
+        <text class="upload-text">添加图片</text>
+      </view>
+    </view>
+    <text class="upload-tip">最多可上传3张图片，每张不超过2MB</text>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="feedback-section">
+    <text class="section-title">联系方式</text>
+    <input class="contact-input" 
+           type="text" 
+           value="{{contact}}" 
+           placeholder="请输入QQ/邮箱/手机号（选填）"
+           placeholder-class="placeholder"
+           bindinput="onContactInput" />
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn" 
+            bindtap="submitFeedback" 
+            disabled="{{!canSubmit}}"
+            loading="{{isSubmitting}}">
+      提交反馈
+    </button>
+  </view>
+
+  <!-- 反馈须知 -->
+  <view class="notice-section">
+    <text class="notice-title">反馈须知</text>
+    <text class="notice-content">
+      1. 请详细描述问题，方便我们快速定位\n
+      2. 涉及账号安全问题请及时联系客服\n
+      3. 我们会在1-3个工作日内回复\n
+      4. 紧急问题可联系客服电话：123456789
+    </text>
+  </view>
+</view>

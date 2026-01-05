@@ -1,0 +1,59 @@
+/* pages/account-security/device-manage.wxss */
+.device-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.tips {
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+  background-color: #fffbe8;
+  border-bottom: 1px solid #eee;
+}
+
+.device-list {
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.device-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.device-name {
+  font-size: 34rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.device-detail {
+  font-size: 28rpx;
+  color: #999;
+  display: flex;
+  gap: 15rpx;
+}
+
+.device-operation {
+  display: flex;
+  align-items: center;
+}
+
+.current-tag {
+  font-size: 28rpx;
+  color: #07c160;
+  padding: 5rpx 15rpx;
+  border: 1px solid #07c160;
+  border-radius: 20rpx;
+}
+
+.remove-btn {
+  font-size: 28rpx;
+  color: #f53f3f;
+  background: transparent;
+  padding: 5rpx 15rpx;
+}

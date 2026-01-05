@@ -1,0 +1,29 @@
+<!--pages/edit-address/edit-address.wxml-->
+<view class="form">
+  <view class="item">
+    <text>收货人</text>
+    <input value="{{name}}" bindinput="onNameInput" placeholder="请输入姓名" />
+  </view>
+
+  <view class="item">
+    <text>手机号</text>
+    <input value="{{phone}}" bindinput="onPhoneInput" placeholder="请输入手机号" type="number" />
+  </view>
+
+  <view class="item">
+    <text>所在地区</text>
+    <input value="{{area}}" bindinput="onAreaInput" placeholder="省市区" />
+  </view>
+
+  <view class="item">
+    <text>详细地址</text>
+    <input value="{{detail}}" bindinput="onDetailInput" placeholder="街道门牌、楼层房间号等" />
+  </view>
+
+  <view class="item switch">
+    <text>设为默认地址</text>
+    <switch checked="{{isDefault}}" bindchange="onDefaultChange" />
+  </view>
+
+  <button class="save-btn" type="primary" bindtap="saveAddress">保存</button>
+</view>
